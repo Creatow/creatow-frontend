@@ -22,31 +22,31 @@ function DropsTable(props) {
         <TableHeader>
           <TableRow>
             <TableHead className="text-left">
-              <div className="flex justify-start items-center gap-1">
+              <div className="flex shrink-0 text-nowrap justify-start items-center gap-1">
                 <img src={collectionsIcon} alt="" />
                 <p>Collections</p>
               </div>
             </TableHead>
             <TableHead className="text-center">
-              <div className="flex justify-center items-center gap-1">
+              <div className="flex shrink-0 text-nowrap justify-center items-center gap-1">
                 <img src={collectorsIcon} alt="" />
                 <p>Collectors</p>
               </div>
             </TableHead>
             <TableHead className="text-center">
-              <div className="flex justify-center items-center gap-1">
+              <div className="flex shrink-0 text-nowrap justify-center items-center gap-1">
                 <img src={sparksIcon} alt="" />
                 <p>Sparks</p>
               </div>
             </TableHead>
             <TableHead className="text-center">
-              <div className="flex justify-center items-center gap-1">
+              <div className="flex shrink-0 text-nowrap justify-center items-center gap-1">
                 <img src={calendarIcon} alt="" />
                 <p>Date</p>
               </div>
             </TableHead>
             <TableHead className="text-center">
-              <div className="flex justify-center items-center gap-1">
+              <div className="flex shrink-0 text-nowrap justify-center items-center gap-1">
                 <img src={hashIcon} alt="" />
                 <p>No of Mints</p>
               </div>
@@ -59,7 +59,7 @@ function DropsTable(props) {
               <TableRow key={item.position}>
                 <TableCell className="text-center">
                   <div className="w-fit flex justify-start items-center gap-4">
-                    <div className="w-6 aspect-square bg-[#493481] rounded-md text-center flex justify-center items-center">
+                    <div className="w-6 aspect-square bg-[#493481] rounded-md text-center flex justify-center items-center shrink-0">
                       <p className="text-sm">{item.position}</p>
                     </div>
                     <img src={item.image} alt="" />

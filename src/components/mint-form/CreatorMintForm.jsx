@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMultistepForm } from "../../hooks/useMultistepForm";
 import Form from "./Form";
 import Preview from "./Preview";
 import crossIcon from "../../assets/modal/crossIcon.svg";
 import Schedule from "./Schedule";
 
+const INITIAL_DATA = {
+  nftImage: "",
+  nftName: "",
+  description: "",
+  category: "",
+  tags: "",
+  walletAddress: "DEFAULT WALLET ADDRESS",
+  date: "2024-09-27",
+  time: "15:34",
+};
+
 function CreatorMintForm(props) {
+  // State for data
+  const [data, setData] = useState(INITIAL_DATA);
+  function updateFields(fields) {
+    setData((prev) => {
+      return { ...prev, ...fields };
+    });
+  }
   const { steps, step, next, back, isFirstStep, isLastStep } = useMultistepForm(
-    [<Form />, <Schedule />, <Preview />]
+    [
+      <Form {...data} updateFields={updateFields} />,
+      <Schedule {...data} updateFields={updateFields} />,
+      <Preview {...data} updateFields={updateFields} />,
+    ]
   );
 
   function onSubmit(event) {
     event.preventDefault();
-    next();
-    console.log(event.target);
+    // Submit form only if not at last step
+    if (!isLastStep) return next();
+    
+    // TODO: some fetch request here
+    console.log(data)
+
   }
 
   return (
@@ -35,6 +61,7 @@ function CreatorMintForm(props) {
           <div className="w-full flex justify-end gap-4 mt-6">
             {!isFirstStep && (
               <button
+                type="button"
                 onClick={back}
                 className="w-full lg:w-fit px-6 py-3 border border-[#D0AAFF] text-[#D0AAFF] font-readex-pro font-semibold rounded-lg"
               >

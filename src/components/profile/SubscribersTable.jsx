@@ -26,13 +26,13 @@ function SubscribersTable(props) {
               </div>
             </TableHead>
             <TableHead className="text-center">
-              <div className="flex justify-start items-center gap-1">
+              <div className="w-max flex shrink-0 text-nowrap justify-start items-center gap-1">
                 <img src={walletIcon} alt="" />
                 <p>Wallet Address</p>
               </div>
             </TableHead>
             <TableHead className="text-center">
-              <div className="flex justify-start items-center gap-1">
+              <div className="w-max flex shrink-0 text-nowrap justify-start items-center gap-1">
                 <img src={calendarIcon} alt="" />
                 <p>Subscribed On</p>
               </div>
@@ -44,13 +44,13 @@ function SubscribersTable(props) {
             return (
               <TableRow>
                 <TableCell className="text-center">
-                  <div className="w-fit flex justify-start items-center gap-4">
+                  <div className="w-max flex justify-start items-center gap-4">
                     <img src={item.image} alt="" />
                     <p>{item.subscriberName}</p>
                   </div>
                 </TableCell>
                 <TableCell className="text-center w-[150px]">
-                  <p className="w-fit mx-auto truncate max-w-[100px]">
+                  <p className="w-max mx-auto truncate max-w-[100px]">
                     {item.walletAddress}
                   </p>
                 </TableCell>

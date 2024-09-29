@@ -8,11 +8,20 @@ import {
   SelectValue,
 } from "../../components/ui/select";
 
-function Form() {
+function Form({
+  nftImage,
+  nftName,
+  description,
+  category,
+  tags,
+  walletAddress,
+  updateFields,
+}) {
   const [previewImage, setPreviewImage] = useState();
 
   function getImage(event) {
-    setPreviewImage(URL.createObjectURL(event.target.files[0]));
+    updateFields({ nftImage: URL.createObjectURL(event.target.files[0]) });
+    // setPreviewImage(URL.createObjectURL(event.target.files[0]));
   }
 
   return (
@@ -25,9 +34,9 @@ function Form() {
           <label htmlFor="collection-image">
             <div className="text-sm space-y-6">
               <p>Upload your collection image</p>
-              <div className="h-[250px] lg:max-w-[250px] lg:aspect-square flex justify-center items-center bg-[#27194E] rounded-2xl border-[#D0AAFF] border cursor-pointer">
+              <div className="min-h-[250px] lg:max-w-[250px] lg:aspect-square  flex justify-center items-center bg-[#27194E] rounded-2xl border-[#D0AAFF] border cursor-pointer overflow-hidden">
                 <img
-                  src={previewImage ? previewImage : uploadIcon}
+                  src={nftImage ? nftImage : uploadIcon}
                   alt="upload-icon"
                   className="object-cover"
                 />
@@ -54,6 +63,8 @@ function Form() {
             <label htmlFor="nft-name">Name your NFT</label>
             <input
               type="text"
+              value={nftName}
+              onChange={(e) => updateFields({ nftName: e.target.value })}
               placeholder="NFT Name"
               className="py-2 px-4 text-sm lg:text-base bg-transparent border-[#363355] border rounded-lg"
               id="nft-name"
@@ -64,6 +75,8 @@ function Form() {
           <span className="flex flex-col gap-2">
             <label htmlFor="description">Description</label>
             <textarea
+              value={description}
+              onChange={(e) => updateFields({ description: e.target.value })}
               placeholder="Enter the description of your NFT here"
               className="py-2 px-4 text-sm lg:text-base bg-transparent border-[#363355] border rounded-lg"
               id="description"
@@ -74,7 +87,10 @@ function Form() {
 
           <span className="flex flex-col gap-2">
             <label htmlFor="categories">Categories</label>
-            <Select onValueChange={(value) => console.log(value)}>
+            <Select
+              value={category}
+              onValueChange={(value) => updateFields({ category: value })}
+            >
               <SelectTrigger className="border border-[#363355] text-white text-opacity-50  bg-transparent gap-2">
                 <SelectValue placeholder="Choose categories" />
               </SelectTrigger>
@@ -117,6 +133,8 @@ function Form() {
             <label htmlFor="tags">Tags</label>
             <input
               type="text"
+              value={tags}
+              onChange={(e) => updateFields({ tags: e.target.value })}
               placeholder="Add tags"
               className="py-2 px-4 text-sm lg:text-base bg-transparent border-[#363355] border rounded-lg"
               id="tags"
@@ -128,12 +146,13 @@ function Form() {
             <label htmlFor="wallet-address">Wallet Address</label>
             <input
               type="text"
+              value={walletAddress}
+              // onChange={(e) => updateFields({ walletAddress: e.target.value })}
               placeholder="Your wallet address"
               className="py-2 px-4 text-sm lg:text-base bg-transparent border-[#363355] text-slate-400 border rounded-lg cursor-not-allowed"
               id="wallet-address"
               required
               disabled
-              value={"value-fetched-from-profile"}
             />
           </span>
         </div>

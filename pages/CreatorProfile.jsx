@@ -20,6 +20,13 @@ import dropsContent from "../src/constants/dropsTableContent";
 
 import aboutIcon from "../src/assets/accordion/about.svg";
 import perksIcon from "../src/assets/accordion/perks.svg";
+import walletIcon from "../src/assets/profile/WalletOutline.svg";
+import ElixirIcon from "../src/assets/profile/ElixirIcon.svg";
+import FolderIcon from "../src/assets/profile/FolderIcon.svg";
+import sparkIconWhite from "../src/assets/profile/sparkIconWhite.svg";
+import subsIconWhite from "../src/assets/profile/subsIconWhite.svg";
+import collectorsIconWhite from "../src/assets/profile/collectorsIconWhite.svg";
+import viewsIconWhite from "../src/assets/profile/viewsIconWhite.svg";
 
 import DashProfileCard from "../src/components/profile/profile-card/DashProfileCard";
 import LeaderboardCard from "../src/components/profile/leaderboard-card/LeaderboardCard";
@@ -27,10 +34,12 @@ import DropsTable from "../src/components/profile/DropsTable";
 import SubscribersTable from "../src/components/profile/SubscribersTable";
 import ActivitiesTable from "../src/components/profile/ActivitiesTable";
 import CreatorMintForm from "../src/components/mint-form/CreatorMintForm";
+import Graph from "../src/components/profile/Graph";
 
 function Profile() {
   const [isCreator, setIsCreator] = useState(true);
   const [showMintForm, setShowMintForm] = useState(false);
+  const [graphValue, setGraphValue] = useState("sparks");
   return (
     <>
       {/* Show NFT Mint form modal */}
@@ -91,21 +100,133 @@ function Profile() {
 
             {/* Top graphs, create NFT button */}
             {isCreator && (
-              <div className="flex justify-end px-4 lg:px-0">
-                <button
-                  onClick={() => setShowMintForm(true)}
-                  className="px-6 py-3 bg-[#D0AAFF] font-readex-pro rounded-lg"
-                >
-                  Create NFT
-                </button>
-              </div>
+              <>
+                <section className="flex justify-between px-4 lg:px-0">
+                  <div className="flex items-center gap-[10px] leading-5 font-medium bg-[#150A32] rounded-lg px-4 py-3">
+                    <span className="flex gap-2">
+                      <img
+                        src={walletIcon}
+                        alt="wallet-icon"
+                        width={20}
+                        height={20}
+                      />
+                      <p className="text-[#9A8FFF]">Balance</p>
+                    </span>
+                    <span className="flex gap-1">
+                      <p className="text-white">5000</p>
+                      <img
+                        src={ElixirIcon}
+                        alt="elixir-icon"
+                        width={16}
+                        height={16}
+                      />
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => setShowMintForm(true)}
+                    className="flex items-center gap-2 bg-[#D0AAFF] font-readex-pro font-medium rounded-lg px-6 py-3"
+                  >
+                    <img
+                      src={FolderIcon}
+                      alt="create-nft icon"
+                      width={20}
+                      height={20}
+                    />
+                    <p>Create NFT</p>
+                  </button>
+                </section>
+
+                {/* Graph section */}
+                <section className="w-full flex flex-col lg:flex-row gap-4">
+                  {/* Graph - buttons */}
+                  <div className="w-full lg:w-[200px] grid grid-cols-2 lg:grid-cols-1 place-content-center gap-4 px-4 lg:px-0">
+                    <button
+                      onClick={() => setGraphValue("sparks")}
+                      className={
+                        (graphValue === "sparks" ? "!bg-[#27204D]" : "") +
+                        " text-white text-left bg-[#151329] rounded-xl px-6 py-4 space-y-3 hover:bg-[#27204D] border border-[#D8CBFF] border-opacity-10"
+                      }
+                    >
+                      <span className="flex gap-1">
+                        <img
+                          src={sparkIconWhite}
+                          alt="spark-icon"
+                          width={16}
+                          height={16}
+                        />
+                        <p className="text-sm text-nowrap">Sparks Earned</p>
+                      </span>
+                      <p className="text-[18px] font-medium">673</p>
+                    </button>
+                    <button
+                      onClick={() => setGraphValue("subs")}
+                      className={
+                        (graphValue === "subs" ? "!bg-[#27204D]" : "") +
+                        " text-white text-left bg-[#151329] rounded-xl px-6 py-4 space-y-3 hover:bg-[#27204D] border border-[#D8CBFF] border-opacity-10"
+                      }
+                    >
+                      <span className="flex gap-1">
+                        <img
+                          src={subsIconWhite}
+                          alt="subscribers-icon"
+                          width={16}
+                          height={16}
+                        />
+                        <p className="text-sm text-nowrap">Subscribers</p>
+                      </span>
+                      <p className="text-[18px] font-medium">3,076</p>
+                    </button>
+                    <button
+                      onClick={() => setGraphValue("collectors")}
+                      className={
+                        (graphValue === "collectors" ? "!bg-[#27204D]" : "") +
+                        " text-white text-left bg-[#151329] rounded-xl px-6 py-4 space-y-3 hover:bg-[#27204D] border border-[#D8CBFF] border-opacity-10"
+                      }
+                    >
+                      <span className="flex gap-1">
+                        <img
+                          src={collectorsIconWhite}
+                          alt="collectors-icon"
+                          width={16}
+                          height={16}
+                        />
+                        <p className="text-sm text-nowrap">Collectors</p>
+                      </span>
+                      <p className="text-[18px] font-medium">124</p>
+                    </button>
+                    <button
+                      onClick={() => setGraphValue("views")}
+                      className={
+                        (graphValue === "views" ? "!bg-[#27204D]" : "") +
+                        " text-white text-left bg-[#151329] rounded-xl px-6 py-4 space-y-3 hover:bg-[#27204D] border border-[#D8CBFF] border-opacity-10"
+                      }
+                    >
+                      <span className="flex gap-1">
+                        <img
+                          src={viewsIconWhite}
+                          alt="views-icon"
+                          width={16}
+                          height={16}
+                        />
+                        <p className="text-sm text-nowrap">Views</p>
+                      </span>
+                      <p className="text-[18px] font-medium">12,320</p>
+                    </button>
+                  </div>
+
+                  {/* Actual graph */}
+                  <div className="w-full h-[300px] lg:h-auto bg-[#151329] rounded-lg lg:py-6">
+                    <Graph value={graphValue} />
+                  </div>
+                </section>
+              </>
             )}
 
             <Tabs
               defaultValue="drops"
               className="w-full flex flex-col justify-center items-start bg-[#151329]"
             >
-              <TabsList className="bg-[#0d0a1b] flex justify-center items-center lg:justify-start lg:gap-6">
+              <TabsList className="bg-[#0d0a1b] overflow-x-auto overflow-y-hidden flex justify-center items-center lg:justify-start lg:gap-6">
                 <TabsTrigger value="drops">Drops</TabsTrigger>
                 <TabsTrigger value="leaderboard">Leaderboard</TabsTrigger>
                 {isCreator && (

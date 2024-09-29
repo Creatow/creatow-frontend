@@ -48,18 +48,41 @@ function DashProfileCard(props) {
 
         {/* Stats */}
         <div className="pb-8">
-          <div className="flex justify-between py-3 border-b border-[#1e1c31]">
-            <p>Subscription</p>
-            <p className="font-semibold">54</p>
-          </div>
-          <div className="flex justify-between py-3 border-b border-[#1e1c31]">
-            <p>Collectibles</p>
-            <p className="font-semibold">03</p>
-          </div>
-          <div className="flex justify-between py-3">
-            <p>Sparks</p>
-            <p className="font-semibold">01</p>
-          </div>
+          {props.isCreator ? (
+            <>
+              <div className="flex justify-between py-3 border-b border-[#1e1c31]">
+                <p>Total Sparks Earned</p>
+                <p className="font-semibold">54</p>
+              </div>
+              <div className="flex justify-between py-3 border-b border-[#1e1c31]">
+                <p>Total Subscribers</p>
+                <p className="font-semibold">03</p>
+              </div>
+              <div className="flex justify-between py-3">
+                <p>Total Collectors</p>
+                <p className="font-semibold">01</p>
+              </div>
+              <div className="flex justify-between py-3">
+                <p>Total Views</p>
+                <p className="font-semibold">01</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex justify-between py-3 border-b border-[#1e1c31]">
+                <p>Subscription</p>
+                <p className="font-semibold">54</p>
+              </div>
+              <div className="flex justify-between py-3 border-b border-[#1e1c31]">
+                <p>Collectibles</p>
+                <p className="font-semibold">03</p>
+              </div>
+              <div className="flex justify-between py-3">
+                <p>Sparks</p>
+                <p className="font-semibold">01</p>
+              </div>
+            </>
+          )}
         </div>
 
         {/* buttons */}
