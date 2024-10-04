@@ -58,7 +58,7 @@ function Navbar() {
 
         {/* Elixir count and dropdown - visible only on desktop */}
         <div className="hidden lg:flex w-1/3 justify-end my-auto">
-          <ConditionalNavbar elixirClaimActive={elixirClaimActive} />
+          <ConditionalNavbar elixirClaimActive={elixirClaimActive} setElixirClaimActive={setElixirClaimActive} />
         </div>
       </nav>
 

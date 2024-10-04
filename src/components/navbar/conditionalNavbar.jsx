@@ -11,9 +11,16 @@ import profilePlaceholder from "../../assets/navbar/profilePlaceholder.png";
 import chevronDown from "../../assets/navbar/chevronDown.svg";
 import Game from '../raffle/Game';
 
-const NavAccDropdown = ({ handleSignOut, elixirClaimActive }) => {
+const NavAccDropdown = ({ handleSignOut, elixirClaimActive, setElixirClaimActive }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [showClaimElixir, setShowElixir] = useState(false)
+  const [showGame, setShowGame] = useState(false)
+
+  function handleElixirClaimGame() {
+    setElixirClaimActive(false)
+    setShowGame(true)
+  }
+  
   return (
     <>
       <div className="hidden relative lg:flex w-fit text-[#9A8FFF] bg-[#151334] border border-[#2B225B] rounded-lg gap-3 p-2">
@@ -26,7 +33,7 @@ const NavAccDropdown = ({ handleSignOut, elixirClaimActive }) => {
           <button onBlur={() => setIsOpen(false)} onClick={() => {setIsOpen(!isOpen); setShowElixir(false)}} className="flex justify-center items-center gap-2">
             <img src={profilePlaceholder} alt="" className="rounded-full w-7 aspect-square" />
             <p className="text-sm font-semibold tracking-[0.1px]">lofikiss</p>
-            <img src={chevronDown} alt="" className={(isOpen ? "rotate-180" : "") + " rounded-full w-3 aspect-square"} />
+            <img src={chevronDown} alt="" className={(isOpen ? "rotate-180" : "") + " rounded-full w-3 aspect-square transition-all duration-300"} />
           </button>
           <div className={(isOpen ? "block" : "hidden") + " absolute right-0 mt-2 w-full bg-[#151334] border border-[#2B225B] rounded-lg shadow-lg p-2"}>
             <button className="flex gap-3 items-center w-full text-left px-4 py-2 text-sm text-[#8C8A94] hover:bg-[#2B225B] hover:text-[#A988EE] font-semibold">
@@ -47,7 +54,7 @@ const NavAccDropdown = ({ handleSignOut, elixirClaimActive }) => {
             </button>
           </div>
 
-          {/* Claim elixir */}
+          {/* Claim elixir button */}
           <div className={(showClaimElixir ? "block" : "hidden") + " absolute right-0 mt-2 w-full bg-[#151334] border border-[#2B225B] rounded-lg shadow-lg p-2 space-y-2"}>
             <div className='w-full flex justify-between bg-[#1F193D] text-white text-sm font-medium p-3 rounded-[4px]'>
               <p>Current Balance</p>
@@ -59,14 +66,14 @@ const NavAccDropdown = ({ handleSignOut, elixirClaimActive }) => {
             {!elixirClaimActive && (
               <p className='text-[12px] text-[#FFEAEA] bg-[#6D445C] font-medium text-center rounded-[4px] px-2 py-1'>Next Claim available 3H 59M 31S</p>
             )}
-            <button disabled={!elixirClaimActive}
+            <button onClick={handleElixirClaimGame} disabled={!elixirClaimActive}
               className='w-full font-bold text-black bg-[#D0AAFF] py-3 px-4 rounded-lg disabled:bg-opacity-30 disabled:cursor-not-allowed'>
               Claim Elixir
             </button>
           </div>
         </div>
       </div>
-      <Game/>
+      {showGame && <Game setShowGame={setShowGame}/>}
     </>
       
   );
@@ -134,7 +141,7 @@ const ConditionalNavbar = (props) => {
   //   );
   // }
 
-  return <NavAccDropdown handleSignOut={handleSignOut} elixirClaimActive={props.elixirClaimActive} />;
+  return <NavAccDropdown handleSignOut={handleSignOut} elixirClaimActive={props.elixirClaimActive} setElixirClaimActive={props.setElixirClaimActive} />;
 };
 
 export default ConditionalNavbar;
