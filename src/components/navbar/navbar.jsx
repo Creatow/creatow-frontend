@@ -14,7 +14,7 @@ import Hamburger from "hamburger-react";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [elixirClaimActive, setElixirClaimActive] = useState(false);
+  const [elixirClaimActive, setElixirClaimActive] = useState(true);
 
   return (
     <div className="sticky top-0 z-50">

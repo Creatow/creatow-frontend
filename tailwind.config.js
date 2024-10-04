@@ -38,6 +38,12 @@ module.exports = {
         "card-tag":
           "radial-gradient(circle at 50% 50%, #7873D2 8%, #EFB7D3 35%, #A998D9 63%, #BEB6E5 100%);",
         "search-bar-icon": "url('src/assets/navbar/search.svg')",
+        "raffle-gradient":
+          "radial-gradient(98.89% 98.89% at 50% 0%, #801CFF 0%, #6930e0 0%, rgba(0, 137, 255, 0.00) 100%)",
+        "raffle-card": "rgba(60, 23, 139, 0.07)",
+      },
+      boxShadow: {
+        "raffle-card": "0px 0px 12.444px 0px #A277E0 inset",
       },
     },
   },
