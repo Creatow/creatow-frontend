@@ -10,6 +10,7 @@ import profileIcon from "../../assets/navbar/profileIcon.svg";
 import profilePlaceholder from "../../assets/navbar/profilePlaceholder.png";
 import chevronDown from "../../assets/navbar/chevronDown.svg";
 import Game from '../raffle/Game';
+import SignUpFlow from '../signup/SignUpFlow';
 
 const NavAccDropdown = ({ handleSignOut, elixirClaimActive, setElixirClaimActive }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -82,6 +83,7 @@ const NavAccDropdown = ({ handleSignOut, elixirClaimActive, setElixirClaimActive
 const ConditionalNavbar = (props) => {
   const [isSignedUp, setIsSignedUp] = useState(false);
   const { connected, account, signMessage, disconnect } = useWallet();
+  const [showSignUpFlow, setShowSignUpFlow] = useState(false)
 
   useEffect(() => {
     checkAuthStatus();
@@ -141,7 +143,16 @@ const ConditionalNavbar = (props) => {
   //   );
   // }
 
-  return <NavAccDropdown handleSignOut={handleSignOut} elixirClaimActive={props.elixirClaimActive} setElixirClaimActive={props.setElixirClaimActive} />;
+  return (
+    <>
+    {/* TEMPORARY BUTTON TO SHOW SIGNUP FLOW */}
+      <button onClick={() => setShowSignUpFlow(true)} className='text-white p-1 border'>Sign up Flow</button>
+      <NavAccDropdown handleSignOut={handleSignOut} elixirClaimActive={props.elixirClaimActive} setElixirClaimActive={props.setElixirClaimActive} />;
+      {showSignUpFlow && (
+        <SignUpFlow setShowSignUpFlow={setShowSignUpFlow}/>
+      )}
+    </> 
+  )
 };
 
 export default ConditionalNavbar;
