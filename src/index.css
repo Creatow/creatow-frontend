@@ -1,4 +1,187 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  
+@tailwind components;
+@tailwind utilities;
+
+.wallet-button {
+  padding: 8px 12px;
+  height: auto;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: white;
+  color: black;
+}
+
+.wallet-button:hover {
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid white !important;
+}
+
+.ant-modal-content {
+  background-color: #19162f !important;
+  color: white;
+}
+
+.wallet-modal-title::before {
+  content: "Connect Wallet";
+  font-weight: 700;
+  font-size: 32px;
+  color: white;
+}
+
+.ant-modal-close-x {
+  color: white;
+}
+
+.wallet-modal-title {
+  background-color: #19162f !important;
+  span {
+    display: none;
+  }
+}
+
+.aptos-connect-button {
+  color: #3f67ff;
+  border-color: #3f67ff;
+  display: none;
+}
+
+.aptos-connect-privacy-policy-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+
+.aptos-connect-privacy-policy-text {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.aptos-connect-privacy-policy-link {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.aptos-connect-privacy-policy-link:hover {
+  text-decoration: underline;
+}
+
+.aptos-connect-powered-by {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.wallet-menu-wrapper {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  padding-inline: 16px;
+  padding-block: 12px;
+  border-radius: 8px;
+  color: white !important;
+  border-bottom: 1px solid gray;
+}
+
+.wallet-name-wrapper {
+  display: flex;
+  align-items: center;
+  color: white !important;
+  span {
+    color: white !important;
+  }
+}
+
+.wallet-selector-icon {
+  height: 24px;
+  width: 24px;
+  margin-right: 12px;
+}
+
+.wallet-selector-text {
+  font-size: 14px;
+}
+
+.wallet-connect-button {
+  align-self: center;
+  padding: 4px 8px;
+  height: auto;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: transparent;
+  border: 0;
+  color: white;
+}
+
+.wallet-connet-button:hover {
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid white !important;
+}
+
+:where(.css-dev-only-do-not-override-p8b6i).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.wallet-connect-install {
+  align-self: center;
+  color: #3f67ff;
+  padding-right: 16px;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.about-aptos-connect-trigger-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  display: none;
+}
+
+.ant-divider {
+  display: none !important;
+}
+
+.about-aptos-connect-trigger {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-inline: 0;
+  padding-block: 12px;
+  color: black;
+}
+
+.ant-collapse {
+  display: none;
+}
+
+.ant-modal-body::before {
+  content: "RECOMMENDED" !important;
+  font-weight: 400;
+  font-size: 14px;
+  color: #d0aaff;
+}
+
+.ant-modal-body {
+  border-top: 1px solid gray;
+  padding-top: 16px !important;
+}
+
+.ant-modal-wrap {
+  backdrop-filter: blur(10px);
+}

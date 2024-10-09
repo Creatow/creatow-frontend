@@ -12,6 +12,7 @@ const subscriberContent = [
     id: "wer",
     subscriberName: "ALTA",
     image: smallpfp,
+
     walletAddress: "3213213salkdj3120944943qjsfds",
     subscribedOnDate: "30/09/2023",
   },

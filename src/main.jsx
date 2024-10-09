@@ -11,7 +11,7 @@ import NFT from "../pages/NFT.jsx";
 import CreatorProfile from "../pages/CreatorProfile.jsx";
 import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
 import { PetraWallet } from "petra-plugin-wallet-adapter";
-import { Network } from "lucide-react";
+import { BlockchainProvider } from "./components/blockchainProvider.jsx";
 
 const wallets = [new PetraWallet()];
 
@@ -38,13 +38,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/creator-profile",
-    element: <CreatorProfile/>
-
+    element: <CreatorProfile />,
   },
   {
     path: "/creator/nft/:nftID",
-    element: <NFT/>
-  }
+    element: <NFT />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -53,10 +52,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       plugins={wallets}
       autoConnect={true}
       optInWallets={["Petra"]}
-      dappConfig={{ network: Network.DEVNET }}
       onError={(error) => console.error(error)}
     >
-      <RouterProvider router={router} />
+      <BlockchainProvider>
+        <RouterProvider router={router} />
+      </BlockchainProvider>
     </AptosWalletAdapterProvider>
   </React.StrictMode>
 );
