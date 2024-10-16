@@ -4,12 +4,12 @@ import personIcon from "../../assets/modal/person.svg";
 
 function CreatorCard(props) {
   return (
-    <div className="w-fit text-white font-medium font-readex-pro flex items-center gap-2">
+    <a className="w-fit text-white font-medium font-readex-pro flex items-center gap-2" href={props.href}>
       <p className="text-sm text-[#94A3B8]">{props.cardNo}</p>
       <img
         src={props.imageURL}
         alt=""
-        className="max-w-14 w-1/2 aspect-square ml-1"
+        className="max-w-14 w-1/2 aspect-square ml-1 rounded-full"
       />
       <div>
         <p className="text-sm leading-5 tracking-[0.1px]">
@@ -22,7 +22,7 @@ function CreatorCard(props) {
           </p>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 

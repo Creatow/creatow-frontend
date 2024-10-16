@@ -3,15 +3,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Collectibles from "/pages/Collectibles.jsx";
+import Collections from "/pages/Collections.jsx";
 import Creators from "../pages/Creators.jsx";
 import Vault from "../pages/Vault.jsx";
 import Profile from "../pages/Profile.jsx";
-import NFT from "../pages/NFT.jsx";
+import Collection from "../pages/Collection.jsx";
 import CreatorProfile from "../pages/CreatorProfile.jsx";
 import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
 import { PetraWallet } from "petra-plugin-wallet-adapter";
 import { Network } from "lucide-react";
+import Footer from "./components/Footer/Footer.jsx";
 
 const wallets = [new PetraWallet()];
 
@@ -21,8 +22,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/collectibles",
-    element: <Collectibles />,
+    path: "/collections",
+    element: <Collections />,
   },
   {
     path: "/creators",
@@ -37,13 +38,13 @@ const router = createBrowserRouter([
     element: <Profile />,
   },
   {
-    path: "/creator-profile",
+    path: "/:creatorUsername",
     element: <CreatorProfile/>
 
   },
   {
-    path: "/creator/nft/:nftID",
-    element: <NFT/>
+    path: "/:creatorUsername/:collectionID",
+    element: <Collection/>
   }
 ]);
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { WalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
+import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
 import axios from 'axios';
 import elixirIcon from "../../assets/navbar/elixirIcon.svg";
 import copyIcon from "../../assets/navbar/copyIcon.svg";
@@ -21,7 +22,7 @@ const NavAccDropdown = ({ handleSignOut, elixirClaimActive, setElixirClaimActive
     setElixirClaimActive(false)
     setShowGame(true)
   }
-  
+
   return (
     <>
       <div className="hidden relative lg:flex w-fit text-[#9A8FFF] bg-[#151334] border border-[#2B225B] rounded-lg gap-3 p-2">
@@ -39,7 +40,7 @@ const NavAccDropdown = ({ handleSignOut, elixirClaimActive, setElixirClaimActive
           <div className={(isOpen ? "block" : "hidden") + " absolute right-0 mt-2 w-full bg-[#151334] border border-[#2B225B] rounded-lg shadow-lg p-2"}>
             <button className="flex gap-3 items-center w-full text-left px-4 py-2 text-sm text-[#8C8A94] hover:bg-[#2B225B] hover:text-[#A988EE] font-semibold">
               <img src={profileIcon} alt="copy-address-icon" width={20} height={20}  />
-              <p>Profile</p>            
+              <p>Profile</p>
             </button>
             <button className="flex gap-3 items-center w-full text-left px-4 py-2 text-sm text-[#8C8A94] hover:bg-[#2B225B] hover:text-[#A988EE] font-semibold">
               <img src={vaultIcon} alt="vault-icon" width={20} height={20} />
@@ -76,7 +77,7 @@ const NavAccDropdown = ({ handleSignOut, elixirClaimActive, setElixirClaimActive
       </div>
       {showGame && <Game setShowGame={setShowGame}/>}
     </>
-      
+
   );
 };
 
@@ -110,7 +111,7 @@ const ConditionalNavbar = (props) => {
         message: message,
         nonce: nonce
       });
-      const response = await axios.post(`http://localhost:3001/api/v1/auth/signup`, {
+      const response = await axios.post(`/api/v1/auth/signup`, {
         walletAddress: account.address,
         publicKey: account.publicKey,
         signature: signedMessage.signature,
@@ -119,6 +120,7 @@ const ConditionalNavbar = (props) => {
       if (response.data.token) {
         localStorage.setItem('jwt_token', response.data.token);
         setIsSignedUp(true);
+        response.status === 201 ? setShowSignUpFlow(true) : setShowSignUpFlow(false)
       }
     } catch (error) {
       console.error("Error during sign up:", error);
@@ -131,27 +133,25 @@ const ConditionalNavbar = (props) => {
     disconnect();
   };
 
-  // if (!connected) {
-  //   return <WalletSelector />;
-  // }
+   if (!connected) {
+     return <WalletSelector />;
+   }
 
-  // if (connected && !isSignedUp) {
-  //   return (
-  //     <button onClick={handleSignUp} className="text-white bg-[#151334] border border-[#2B225B] rounded-lg px-4 py-2">
-  //       Sign Up
-  //     </button>
-  //   );
-  // }
+   if (connected && !isSignedUp) {
+     return (
+       <button onClick={handleSignUp} className="text-white bg-[#151334] border border-[#2B225B] rounded-lg px-4 py-2">
+         Sign Up
+       </button>
+     );
+   }
 
   return (
     <>
-    {/* TEMPORARY BUTTON TO SHOW SIGNUP FLOW */}
-      <button onClick={() => setShowSignUpFlow(true)} className='text-white p-1 border'>Sign up Flow</button>
       <NavAccDropdown handleSignOut={handleSignOut} elixirClaimActive={props.elixirClaimActive} setElixirClaimActive={props.setElixirClaimActive} />;
       {showSignUpFlow && (
         <SignUpFlow setShowSignUpFlow={setShowSignUpFlow}/>
       )}
-    </> 
+    </>
   )
 };
 

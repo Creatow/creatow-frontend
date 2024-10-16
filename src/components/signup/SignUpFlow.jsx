@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useMultistepForm } from "../../hooks/useMultistepForm";
-import crossIcon from "../../assets/modal/crossIcon.svg";
 import TOS from "./TOS";
 import CreateUserProfile from "./CreateUserProfile";
 import HowElixirWorkInfo from "./HowElixirWorkInfo";

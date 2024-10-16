@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import profilePlaceholder from "../../assets/navbar/profilePlaceholder.png";
 import elixirIcon from "../../assets/navbar/elixirIcon.svg";
 import creatowLogo from "../../assets/navbar/creatowLogo.svg";
-import copyIcon from "../../assets/navbar/copyIcon.svg";
+import copyIcon from "./../../assets/navbar/copyIcon.svg";
 import vaultIcon from "../../assets/navbar/vaultIcon.svg";
 import signOutIcon from "../../assets/navbar/SignOut.svg";
 import exploreIcon from "../../assets/navbar/exploreIcon.svg";
@@ -33,7 +33,7 @@ function Navbar() {
           <a href="/">
             <img src={creatowLogo} alt="company-logo" />
           </a>
-          <a href="">Explore</a>
+          <a href="/collections">Explore</a>
           <a href="/vault">Vault</a>
         </div>
 
