@@ -22,7 +22,7 @@ function CarouselSlide({ collectionName, creatorUserName, creatorPfp, nftUrl, pu
           </div>
         </div>
       </div>
-      <img src={nftUrl} alt={collectionName} className="w-full aspect-square max-w-[375px] rounded-lg" />
+      <img src={nftUrl} alt={collectionName} className="w-full aspect-square max-w-[375px] rounded-lg lg:rounded-3xl" />
     </div>
   );
 }
